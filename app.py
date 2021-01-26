@@ -57,6 +57,12 @@ def find_features(document, word_features):
 
 @app.route('/predict/', methods=['POST'])
 def predict():
+    features_file = open('word_features_file_2k.pickle', 'rb')
+    features = pickle.load(features_file)
+
+    model_file = open('multinumialNB_classifier_2k.pickle', 'rb')
+    model = joblib.load(model_file)
+    
     data = request.json["message"]
     processed = preprocess(data)
     prediction = model.classify(find_features(processed.split(), features))
@@ -65,11 +71,6 @@ def predict():
 
 
 if __name__ == '__main__':
-    features_file = open('word_features_file_2k.pickle', 'rb')
-    features = pickle.load(features_file)
-
-    model_file = open('multinumialNB_classifier_2k.pickle', 'rb')
-    model = joblib.load(model_file)
     
 
     app.run(debug=True)
