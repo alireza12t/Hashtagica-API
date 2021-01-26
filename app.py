@@ -59,7 +59,7 @@ def find_features(document, word_features):
 def predict():
     data = request.json["message"]
     processed = preprocess(data)
-    prediction = model.classify(find_features(features, processed))
+    prediction = model.classify(find_features(processed.split(), features))
 
     return jsonify({'prediction': [prediction]})
 
