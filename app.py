@@ -72,4 +72,4 @@ if __name__ == '__main__':
     model = joblib.load(model_file)
     
 
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)
