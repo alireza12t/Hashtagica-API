@@ -6,7 +6,8 @@ from flask import Flask, request, jsonify
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 #import joblib
-from sklearn.externals import joblib
+import sklearn.external.joblib as joblib
+
 
 nltk.download('stopwords')
 
